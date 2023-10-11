@@ -4,4 +4,4 @@ import User from './user.model';
 import * as userService from './user.service';
 import * as userValidation from './user.validation';
 
-export { userController, userInterfaces, User, userService, userValidation };
+export { User, userController, userInterfaces, userService, userValidation };

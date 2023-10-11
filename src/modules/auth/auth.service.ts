@@ -90,6 +90,7 @@ export const verifyEmail = async (verifyEmailToken: any): Promise<IUserDoc | nul
     const updatedUser = await updateUserById(user.id, { isEmailVerified: true });
     return updatedUser;
   } catch (error) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, 'Email verification failed');
+    const originalError = error as Error;
+    throw new ApiError(httpStatus.UNAUTHORIZED, `Email verification failed because: ${originalError?.message}`);
   }
 };

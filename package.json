@@ -4,15 +4,15 @@
   "description": "Node express mongoose typescript boilerplate",
   "main": "dist/index.js",
   "bin": "bin/createNodetsApp.cjs",
-  "repository": "https://github.com/saisilinus/node-express-mongoose-typescript-boilerplate.git",
+  "repository": "https://github.com/toandn96/node-express-mongoose-typescript.git",
   "bugs": {
-    "url": "https://github.com/saisilinus/node-express-mongoose-typescript-boilerplate/issues"
+    "url": "https://github.com/toandn96/node-express-mongoose-typescript/issues"
   },
-  "author": "linus wafula saisi <saisilinus.work@gmail.com>",
+  "author": "Toan Dao Ngoc <toandn96@gmail.com>",
   "license": "MIT",
   "type": "module",
   "engines": {
-    "node": ">=14.20.1 <19"
+    "node": ">=14"
   },
   "scripts": {
     "start": "pm2 start ecosystem.config.json --no-daemon",
