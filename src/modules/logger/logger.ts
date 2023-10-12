@@ -1,8 +1,7 @@
 import winston from 'winston';
-import isEmpty from 'lodash.isempty';
 import config from '../../config/config';
 
-const customPrintf = winston.format.printf((info) => {
+export const transformableInfo = (info: winston.Logform.TransformableInfo) => {
   const { level, message, label, timestamp } = info;
   if (timestamp && label && level && message) {
     return `${timestamp} [${label}] ${level.toLocaleUpperCase()}: ${message}`;
@@ -13,11 +12,12 @@ const customPrintf = winston.format.printf((info) => {
   const logData: { level?: string; message?: string } = { ...info };
   if (logData.level) delete logData.level;
   if (logData.message) delete logData.message;
-  const logDataString = !isEmpty(logData) ? ` - ${JSON.stringify(logData)}` : '';
+  const logDataString = Object.keys(logData).length ? ` - ${JSON.stringify(logData)}` : '';
   return `${level.toLocaleUpperCase()}: ${message}${logDataString}`;
-});
+};
 
-// // Ignore log messages if they have { private: true }
+const customPrintf = winston.format.printf(transformableInfo);
+
 const ignorePrivate = winston.format((info) => {
   if (info['private']) {
     return false;
