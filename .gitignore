@@ -16,3 +16,8 @@ dist
 
 # docker volume
 data
+
+# Logs file
+combined.log
+error.log
+exceptions.log
